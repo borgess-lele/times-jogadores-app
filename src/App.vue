@@ -1,15 +1,17 @@
 <template>
-  <header>
-    <span class="texto-header">Home</span>
-    <span class="separador">|</span>
-    <span class="texto-header">Jogadores</span>
-    <span class="separador">|</span>
-    <span class="texto-header">Times</span>
-    <span class="separador">|</span>
-    
-    </header>
-  <main>Main</main>
-  <footer>Rodapé</footer>
+<header>
+    <div class="menu-esquerdo">
+      <span>Home</span>
+      <span>|</span>
+      <span>Jogadores</span>
+      <span>|</span>
+      <span>Times</span>
+    </div>
+    <div class="menu-direito">
+      <span>Sair</span>
+    </div>
+  </header>
+  <RouterView />
 </template>
 
 <style>
@@ -32,8 +34,13 @@ footer {
   font-size: 1.3rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
 }
-
+header span {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 main {
   height: 80%;
   background-color: crimson;
