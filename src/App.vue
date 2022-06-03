@@ -18,9 +18,8 @@ import HeaderComp from "@/components/template/HeaderComp.vue";
 
   font-weight: normal;
 }
-
 a {
-  color: burlywood;
+  color: inherit;
   text-decoration: none;
 }
 
