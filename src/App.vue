@@ -1,16 +1,9 @@
+<script setup>
+import HeaderComp from "@/components/template/HeaderComp.vue";
+</script>
+
 <template>
-<header>
-    <div class="menu-esquerdo">
-      <span>Home</span>
-      <span>|</span>
-      <span>Jogadores</span>
-      <span>|</span>
-      <span>Times</span>
-    </div>
-    <div class="menu-direito">
-      <span>Sair</span>
-    </div>
-  </header>
+  <HeaderComp />
   <RouterView />
 </template>
 
@@ -26,23 +19,23 @@
   font-weight: normal;
 }
 
-header,
+a {
+  color: burlywood;
+  text-decoration: none;
+}
+
 footer {
   height: 10%;
-  background-color: #db7093;
+  background-color: #1b6e06;
   color: black;
   font-size: 1.3rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-left: 20px;
 }
-header span {
-  padding-left: 20px;
-  padding-right: 20px;
-}
+
 main {
   height: 80%;
-  background-color: crimson;
+  background-color: rgb(97, 236, 4);
 }
 </style>
