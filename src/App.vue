@@ -1,10 +1,14 @@
 <script setup>
 import HeaderComp from "@/components/template/HeaderComp.vue";
+import FooterComp from "@/components/template/FooterComp.vue";
 </script>
 
 <template>
   <HeaderComp />
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
+  <FooterComp />
 </template>
 
 <style>
@@ -35,6 +39,6 @@ footer {
 
 main {
   height: 80%;
-  background-color: rgb(97, 236, 4);
+  
 }
 </style>
