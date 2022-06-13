@@ -39,6 +39,5 @@ footer {
 
 main {
   height: 80%;
-  
 }
 </style>
