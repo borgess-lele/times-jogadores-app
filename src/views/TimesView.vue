@@ -1,31 +1,28 @@
 <script>
-import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 export default {
   data() {
     return {
-      times: [
-        { id: "e5f9f55e-6cb5-4320-9da4-98016fdc07b0", nome: "time1" },
-        { id: "c23491b9-cc33-485e-877a-87af9fc3a78c", nome: "time2" },
-        { id: "7946eefd-b94e-4b58-82d4-9c9b2f82966a", nome: "time3" },
-        { id: "47da3be9-cb40-4ee6-90cc-6b33c4d794e2", nome: "time4"}
-      ],
+      times: [],
       novo_time: "",
     };
   },
+  async created() {
+    const times = await axios.get("http://localhost:4000/times");
+    this.times = times.data;
+  },
   methods: {
-    salvar() {
-      if (this.novo_time !== "") {
-        const novo_id = uuidv4();
-        this.times.push({
-          id: novo_id,
-          nome: this.novo_time,
-        });
-        this.novo_time = "";
-      }
+    async salvar() {
+      const time = {
+        nome: this.novo_time,
+      };
+      const time_criado = await axios.post("http://localhost:4000/times", time);
+      this.times.push(time_criado.data);
     },
-    excluir(time) {
+    async excluir(time) {
+      await axios.delete(`http://localhost:4000/times/${time.id}`);
       const indice = this.times.indexOf(time);
-      this.times.splice(indice,1);
+      this.times.splice(indice, 1);
     },
   },
 };
