@@ -16,13 +16,18 @@ export default {
   methods: {
     async buscarTodosOsJogadores() {
       const jogadores = await axios.get(
-        "http://localhost:4000/jogadores?expand=time"
+        "http://localhost:4000/jogadores"
       );
       this.jogadores = jogadores.data;
     },
     async salvar() {
       await axios.post("http://localhost:4000/jogadores", this.jogador);
       await this.buscarTodosOsJogadores();
+    },
+    async excluir(jogador) {
+      await axios.delete(`http://localhost:4000/jogadores/${jogador.id}`);
+      const indice = this.jogadores.indexOf(jogador);
+      this.jogadores.splice(indice, 1);
     },
   },
 };
@@ -70,8 +75,11 @@ export default {
             <td>{{ jogador.nome }}</td>
             <td>{{ jogador.anoNascimento }}</td>
             <td>{{ jogador.posicaoJogo }}</td>
-            <td>{{ jogador.time.nome }}</td>
-            <td>???</td>
+            <td>{{ jogador.timeId }}</td>
+            <td>
+              <button>Editar</button>
+              <button @click="excluir(jogador)">Excluir</button>
+            </td>
           </tr>
         </tbody>
       </table>
